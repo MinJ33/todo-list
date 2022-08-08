@@ -12,18 +12,8 @@ h1{
   text-align: center;
 }
 
-button {
- float:right
-}
 
 #input-form {
-  display: flex;
-  justify-content: center;
-}
-
-
-
-#todo-lists{
   display: flex;
   justify-content: center;
 }
