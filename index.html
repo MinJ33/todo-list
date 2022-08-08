@@ -6,18 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>To Do List</title>
 	<link rel="stylesheet" href="./main.css">
+  <script defer src="./todo.js"></script>
 </head>
 <body>
 
 <div class="wrap">
 <h1 id="title">To Do List</h1>
+<form id="input-form">
+<input type="text" placeholder="Write a To Do and Press Enter" required/>
+</form>
 
 <div class="inputAdd">
-<input type="text" placeholder="갓생살아보즈아" name="input"> 
 <button id="add-btn">add</button>
 </div>
 
-<div class="todo-lists">
+<div id="todo-lists">
 <ul>
   <li>끝내주게 숨쉬기</li>
   <li>간지나게 자기</li>

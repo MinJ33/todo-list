@@ -6,7 +6,6 @@
   background-color: bisque;
   border: solid 1px black;
   border-radius: 10px;
-
 }
 
 h1{
@@ -17,14 +16,14 @@ button {
  float:right
 }
 
-.inputAdd {
+#input-form {
   display: flex;
   justify-content: center;
 }
 
 
 
-.todo-lists{
+#todo-lists{
   display: flex;
   justify-content: center;
 }
