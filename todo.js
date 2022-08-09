@@ -3,11 +3,22 @@ const inputForm = document.querySelector("#input-form")
 const toDoInput = inputForm.querySelector("input")
 const todoLists = document.querySelector("#todo-lists")
 
+function deleteToDo(event){
+  const li = event.target.parentElement
+  li.remove();
+}
+
 function LisitingToDo(newTodo){
   const li = document.createElement("li");
   const span = document.createElement("span");
-  li.appendChild(span);
   span.innerText = newTodo;
+
+  const button = document.createElement("button");
+  button.innerText = "🔥"
+  button.addEventListener("click", deleteToDo);
+  li.appendChild(span);
+  li.appendChild(button);
+
   todoLists.appendChild(li);
 }
 
