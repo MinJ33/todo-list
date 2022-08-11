@@ -4,9 +4,13 @@ const toDoInput = inputForm.querySelector("input")
 const todoLists = document.querySelector("#todo-lists")
 
 function deleteToDo(event){
-  const li = event.target.parentElement
+  const li = event.target.parentElement;
   li.remove();
+  toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
+  // toDos DB에서 todo를 지운 뒤에 saveToDos를 한번 더 불러줌
+  saveToDos();
 }
+
 
 // newTodo가 생길때마다 그 text를 array에 push
 let toDos = [];
@@ -18,9 +22,9 @@ function saveToDos() {
 
 function LisitingToDo(newTodo){
   const li = document.createElement("li");
+  li.id = newTodo.id;
   const span = document.createElement("span");
-  span.innerText = newTodo;
-
+  span.innerText = newTodo.text;
   const button = document.createElement("button");
   button.innerText = "🔥"
   button.addEventListener("click", deleteToDo);
@@ -37,8 +41,12 @@ function handleToDoSubmit(event){
   // empty the input form after submitting To Do
   toDoInput.value = "";
   // newTodo가 생길때마다 그 text를 array에 push
-  toDos.push(newTodo);
-  LisitingToDo(newTodo);
+  const newTodoObj = {
+    text: newTodo,
+    id: Date.now(),
+  };
+  toDos.push(newTodoObj);
+  LisitingToDo(newTodoObj);
   saveToDos();
 }
 
@@ -51,10 +59,10 @@ const savedToDos = localStorage.getItem("toDos")
 if (savedToDos !== null) {
 	const parsedToDos = JSON.parse(savedToDos);
     
-  // parsedToDos는 array여서 forEach를 사용할 수 있음 
-  // forEach 는 array의 각각의 item 에 대해 function을 실행해줌
-  toDos = parsedToDos;
-  parsedToDos.forEach(LisitingToDo);
+// parsedToDos는 array여서 forEach를 사용할 수 있음 
+// forEach 는 array의 각각의 item 에 대해 function을 실행해줌
+toDos = parsedToDos;
+parsedToDos.forEach(LisitingToDo);
     
 }
 
